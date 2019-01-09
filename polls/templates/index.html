@@ -4,17 +4,14 @@
   this is the index page
 {% endblock %}
 
+
 {% block body %}
+  <ol>
+{% for question in questions %}
+  <li>
+    <a href="{% url 'detail' question.id %}">Question :{{ question.question_text }} </br>
+  </li>
 
-  {% for question in questions %}
-    Question: {{ question.question_text }} <br />
-    Date published: {{ question.pub_date }} <br />
-
-    {% for choice in question.choices.all %}
-      text: {{ choice.choice_text }} <br />
-      votes: {{ choice.votes }} <br /><br />
-    {% endfor %}
-    <br />
   {% endfor %}
-  
+  </ol>
 {% endblock %}
